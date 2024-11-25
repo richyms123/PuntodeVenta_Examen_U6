@@ -13,7 +13,7 @@ public class frmLogin extends javax.swing.JFrame {
     /**
      * Creates new form frmLogin
      */
-    int mouseX,mouseY;
+    int mouseX,mouseY=0;
     public frmLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
