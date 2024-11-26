@@ -13,7 +13,6 @@ public class Producto {
     private String nombre;
     private float precio;
     private int existencias;
-    private int nVentas;
     
      public Producto(int clave, String nombre, float precio, int existencias) {
         this.clave = clave;
