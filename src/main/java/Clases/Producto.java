@@ -13,6 +13,22 @@ public class Producto {
     private String nombre;
     private float precio;
     private int existencias;
+    
+     public Producto(int clave, String nombre, float precio, int existencias) {
+        this.clave = clave;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.existencias = existencias;
+    }
+
+    public Producto(String datos) {
+        String[] elementos=datos.split("°");
+        clave=Integer.parseInt(elementos[0]);
+        nombre=elementos[1];
+        precio=Float.parseFloat(elementos[2]);
+        existencias=Integer.parseInt(elementos[3]);
+        
+    }
 
     public int getClave() {
         return clave;
