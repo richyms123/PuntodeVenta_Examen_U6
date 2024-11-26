@@ -18,6 +18,7 @@ public class frmLogin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         int alo=123;
+        int carloos=12;
     }
 
     /**
