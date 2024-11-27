@@ -4,10 +4,6 @@
 
 package mycompany.puntodeventa_examen_u6;
 
-/**
- *
- * @author rickp
- */
 public class PuntodeVenta_Examen_U6 {
 
     public static void main(String[] args) {
