@@ -4,10 +4,6 @@
  */
 package mycompany.puntodeventa_examen_u6;
 
-/**
- *
- * @author rickp
- */
 public class frmLogin extends javax.swing.JFrame {
 
     /**
@@ -211,7 +207,7 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
-        this.setState(frmLogin.ICONIFIED);
+        this.setState(frmLogin.HIDE_ON_CLOSE);
     }//GEN-LAST:event_btnMinimizarMouseClicked
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
