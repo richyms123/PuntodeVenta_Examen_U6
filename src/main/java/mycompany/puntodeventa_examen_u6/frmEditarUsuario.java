@@ -36,7 +36,7 @@ public class frmEditarUsuario extends javax.swing.JFrame {
             Usuario a = new Usuario(linea);
             txtUsuario.setText(a.getUsuario());
             txtNombre.setText(a.getNombre());
-            pswContra.setText(a.getContrasena());
+            pswContra.setText(a.getPassword());
         }else{
             //Lanzar una excepcion
             throw new NoSuchElementException("El alumno seleccionado no se encontro");
