@@ -15,7 +15,7 @@ public class Usuario {
     
 
     public Usuario(String datos) {
-        String[] elementos=datos.split("°");
+        String[] elementos=datos.split("/");
         nombre=elementos[0];
         usuario=elementos[1];
         password= elementos[2];
@@ -52,4 +52,11 @@ public class Usuario {
         this.password = password;
     }
 
+    public String toString() {
+        return nombre + "/" + usuario + "/" + password;
+    }
+    
+    public Object[] toArray(){
+        return new Object[]{nombre, usuario};
+    }
 }
