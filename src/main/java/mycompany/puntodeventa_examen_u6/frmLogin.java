@@ -212,6 +212,10 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         
+        frmMenu frm = new frmMenu();
+        this.setVisible(false);
+        frm.setVisible(true);
+        
         String usuario1=txtUsuario.getText();
         String pass=txtcontra.getText()+"";
         if((usuario1.trim().length()<=1) && (pass.trim().length()<=1)){
@@ -307,7 +311,7 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlTituloMouseDragged
 
     private void btnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentaActionPerformed
-        frmRegistroUsuario frm = new frmRegistroUsuario(this);
+        frmCrearUsuario frm = new frmCrearUsuario();
         this.setVisible(false);
         frm.setVisible(true);
     }//GEN-LAST:event_btnCrearCuentaActionPerformed
