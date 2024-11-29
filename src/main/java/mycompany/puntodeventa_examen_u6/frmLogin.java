@@ -4,6 +4,19 @@
  */
 package mycompany.puntodeventa_examen_u6;
 
+import Clases.Usuario;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import javax.swing.JOptionPane;
+
+
+/**
+ *
+ * @author rickp
+ */
 public class frmLogin extends javax.swing.JFrame {
 
     /**
@@ -11,7 +24,7 @@ public class frmLogin extends javax.swing.JFrame {
      */
     int mouseX,mouseY=0;
     public frmLogin() {
-        initComponents();
+        initComponents(); 
         this.setLocationRelativeTo(null);
         int alo=123;
         int carloos=12;
@@ -34,9 +47,9 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
         btnIniciarSesion = new javax.swing.JButton();
         btnCrearCuenta = new javax.swing.JButton();
+        txtcontra = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -120,11 +133,6 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
 
-        txtPassword.setBackground(new java.awt.Color(107, 122, 139));
-        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(107, 122, 139), 4, true));
-
         btnIniciarSesion.setBackground(new java.awt.Color(34, 167, 240));
         btnIniciarSesion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,7 +171,7 @@ public class frmLogin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtcontra)))
                 .addGap(65, 65, 65))
         );
         jPanel2Layout.setVerticalGroup(
@@ -174,9 +182,9 @@ public class frmLogin extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcontra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,11 +211,84 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        // TODO add your handling code here:
+        
+        String usuario1=txtUsuario.getText();
+        String pass=txtcontra.getText()+"";
+        if((usuario1.trim().length()<=1) && (pass.trim().length()<=1)){
+            JOptionPane.showMessageDialog(this,"No se pueden dejar campos bacios.");
+        }
+        else if(usuario1.isEmpty()){
+            JOptionPane.showMessageDialog(this,"No se pueden dejar campos bacios de Usuario.");
+        }
+        else if(pass.length()<=1){
+            JOptionPane.showMessageDialog(this,"No se pueden dejar campos bacios de Contrasena.");
+        }
+        
+        else{
+            ArrayList<String> usuarios=manejador.ManejadorArchivos.leerArchivo("Usuarios.txt");
+
+            //Encriptacion c=new Encriptacion();
+            String usuario=txtUsuario.getText();
+            String contracena2=txtcontra.getText();
+            //char [] contrasena=txtPassword.getPassword();
+            //System.out.println(contracena2);
+            //System.out.println(usuario);
+            if (usuario!=null) {
+            for(String i : usuarios){
+                String elementos[]=i.split("°");
+                Usuario c=new Usuario(elementos[0],elementos[1],elementos[2]);
+                String usuarioArchivo=elementos[1];
+                String contrasenaArchivo=c.hashcontracena(elementos[2]);
+                System.out.println(contrasenaArchivo);
+            // Comparar
+                //System.out.println(contrasenaArchivo);
+                //System.out.println(usuarioArchivo);
+            //if (usuario.equals(usuarioArchivo) && Compara(contrasena,contrasenaArchivo)==true) {
+            if(usuario.equals(usuarioArchivo) && c.verificarCintacena(contracena2,contrasenaArchivo)){
+                JOptionPane.showMessageDialog(this,"Inicio de sesión exitoso.");
+                frmPrueva frmP=new frmPrueva(this,c);
+                this.setVisible(false);
+                frmP.setVisible(true);
+                break;
+            } else {
+                JOptionPane.showMessageDialog(this,"Nombre de usuario o contraseña incorrectos.");
+            }
+            }
+
+        } 
+        else {
+            JOptionPane.showMessageDialog(this,"No se pudo leer la línea del archivo.");
+        }
+    }
+        
+      
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
+    public boolean Compara(char[]contra,String contrasena){
+        int b=1;
+        if(contra.length!=contrasena.length()){
+            return false;
+        }
+        else{
+            for(int i=0; i<contra.length; i++){
+                if(contra[i]==contrasena.charAt(i))
+                    b=1;
+                else{
+                    b=0;
+                    return false;
+                }
+            }
+        }
+        if(b==1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
-        this.setState(frmLogin.HIDE_ON_CLOSE);
+        this.setState(frmLogin.ICONIFIED);
     }//GEN-LAST:event_btnMinimizarMouseClicked
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
@@ -276,7 +357,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pnlTitulo;
-    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtcontra;
     // End of variables declaration//GEN-END:variables
 }
