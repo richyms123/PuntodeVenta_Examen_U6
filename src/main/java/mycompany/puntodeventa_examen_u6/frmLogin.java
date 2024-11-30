@@ -212,83 +212,80 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         
-        frmMenu frm = new frmMenu();
-        this.setVisible(false);
-        frm.setVisible(true);
-        
-        String usuario1=txtUsuario.getText();
-        String pass=txtcontra.getText()+"";
-        if((usuario1.trim().length()<=1) && (pass.trim().length()<=1)){
-            JOptionPane.showMessageDialog(this,"No se pueden dejar campos bacios.");
-        }
-        else if(usuario1.isEmpty()){
-            JOptionPane.showMessageDialog(this,"No se pueden dejar campos bacios de Usuario.");
-        }
-        else if(pass.length()<=1){
-            JOptionPane.showMessageDialog(this,"No se pueden dejar campos bacios de Contrasena.");
-        }
-        
-        else{
-            ArrayList<String> usuarios=manejador.ManejadorArchivos.leerArchivo("Usuarios.txt");
+        String usuario1 = txtUsuario.getText();
+        String pass = txtcontra.getText() + "";
+        if ((usuario1.trim().length() <= 1) && (pass.trim().length() <= 1)) {
+            JOptionPane.showMessageDialog(this, "No se pueden dejar campos bacios.");
+        } else if (usuario1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se pueden dejar campos vacios de Usuario.");
+        } else if (pass.length() <= 1) {
+            JOptionPane.showMessageDialog(this, "No se pueden dejar campos vacios de Contrasena.");
+        } else {
+            ArrayList<String> usuarios = manejador.ManejadorArchivos.leerArchivo("Usuarios.txt");
 
             //Encriptacion c=new Encriptacion();
-            String usuario=txtUsuario.getText();
-            String contracena2=txtcontra.getText();
+            String usuario = txtUsuario.getText();
+            String contracena2 = txtcontra.getText();
             //char [] contrasena=txtPassword.getPassword();
             //System.out.println(contracena2);
             //System.out.println(usuario);
-            if (usuario!=null) {
-            for(String i : usuarios){
-                String elementos[]=i.split("°");
-                Usuario c=new Usuario(elementos[0],elementos[1],elementos[2]);
-                String usuarioArchivo=elementos[1];
-                String contrasenaArchivo=c.hashcontracena(elementos[2]);
-                System.out.println(contrasenaArchivo);
-            // Comparar
-                //System.out.println(contrasenaArchivo);
-                //System.out.println(usuarioArchivo);
-            //if (usuario.equals(usuarioArchivo) && Compara(contrasena,contrasenaArchivo)==true) {
-            if(usuario.equals(usuarioArchivo) && c.verificarCintacena(contracena2,contrasenaArchivo)){
-                JOptionPane.showMessageDialog(this,"Inicio de sesión exitoso.");
-                frmPrueva frmP=new frmPrueva(this,c);
-                this.setVisible(false);
-                frmP.setVisible(true);
-                break;
+            if (usuario != null) {
+                for (String i : usuarios) {
+                    String elementos[] = i.split("~");
+                    Usuario c = new Usuario(elementos[0], elementos[1], elementos[2]);
+                    String usuarioArchivo = elementos[1];
+                    String contrasenaArchivo = c.hashcontracena(elementos[2]);
+                    if(usuario.equals(usuarioArchivo)){
+                        //String usuarioArchivo = elementos[1];
+                        //String contrasenaArchivo = c.hashcontracena(elementos[2]);
+                        System.out.println(contrasenaArchivo);
+                        // Comparar
+                        //System.out.println(contrasenaArchivo);
+                        System.out.println(usuarioArchivo);
+                        //if (usuario.equals(usuarioArchivo) && Compara(contrasena,contrasenaArchivo)==true) {
+                        if (usuario.equals(usuarioArchivo) && c.verificarCintacena(contracena2, contrasenaArchivo)) {
+                            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+                            frmMenu frmP = new frmMenu(this, c);
+                            this.setVisible(false);
+                            frmP.setVisible(true);
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos.");
+                        }
+                    }
+                }
+
             } else {
-                JOptionPane.showMessageDialog(this,"Nombre de usuario o contraseña incorrectos.");
+                JOptionPane.showMessageDialog(this, "No se pudo leer la línea del archivo.");
             }
-            }
-
-        } 
-        else {
-            JOptionPane.showMessageDialog(this,"No se pudo leer la línea del archivo.");
         }
-    }
-      
-    }//GEN-LAST:event_btnIniciarSesionActionPerformed
+        
+        
 
-    public boolean Compara(char[]contra,String contrasena){
-        int b=1;
-        if(contra.length!=contrasena.length()){
+    }                                                
+
+    public boolean Compara(char[] contra, String contrasena) {
+        int b = 1;
+        if (contra.length != contrasena.length()) {
             return false;
-        }
-        else{
-            for(int i=0; i<contra.length; i++){
-                if(contra[i]==contrasena.charAt(i))
-                    b=1;
-                else{
-                    b=0;
+        } else {
+            for (int i = 0; i < contra.length; i++) {
+                if (contra[i] == contrasena.charAt(i)) {
+                    b = 1;
+                } else {
+                    b = 0;
                     return false;
                 }
             }
         }
-        if(b==1){
+        if (b == 1) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
-    }
+      
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
     
     private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
         this.setState(frmLogin.ICONIFIED);

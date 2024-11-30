@@ -40,7 +40,7 @@ public class frmMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlTitulo = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblDos = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
         btnMinimizar = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JLabel();
@@ -58,9 +58,9 @@ public class frmMenu extends javax.swing.JFrame {
         pnlTitulo.setBackground(new java.awt.Color(250, 150, 16));
         pnlTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel2.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Bienvenido(a)");
+        lblDos.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 30)); // NOI18N
+        lblDos.setForeground(new java.awt.Color(255, 255, 255));
+        lblDos.setText("Bienvenido(a)");
 
         lblNombreUsuario.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 30)); // NOI18N
         lblNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,7 +100,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lblDos)
                         .addGap(35, 35, 35))
                     .addComponent(lblNombreUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(174, 174, 174)
@@ -114,7 +114,7 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(lblDos)
                     .addGroup(pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -363,8 +363,8 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JButton btnRegistrarUsuarios;
     private javax.swing.JButton btnVentasDelDia;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblDos;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JPanel pnlTitulo;
     // End of variables declaration//GEN-END:variables

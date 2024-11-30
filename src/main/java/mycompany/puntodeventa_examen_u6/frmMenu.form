@@ -55,7 +55,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lblNombreUsuario" alignment="1" min="-2" pref="339" max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDos" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCerrar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnMinimizar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblDos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gill Sans Ultra Bold" size="30" style="0"/>
