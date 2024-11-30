@@ -82,8 +82,8 @@ public class Venta {
      * dentro del ArrayList.
      * @return 
      */
-    public double generarTotalVenta(){
-        double Total = 0;
+    public float generarTotalVenta(){
+        float Total = 0;
         for (DetalleVenta venta : arrayDetalleVenta){
             Total += venta.generarSubTotal();
         }
