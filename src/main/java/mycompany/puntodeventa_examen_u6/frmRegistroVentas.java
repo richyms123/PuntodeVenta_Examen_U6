@@ -1,0 +1,502 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package mycompany.puntodeventa_examen_u6;
+
+import Clases.DetalleVenta;
+import Clases.Producto;
+import Clases.Usuario;
+import Clases.Venta;
+import java.awt.Color;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Alumno LMC
+ */
+public class frmRegistroVentas extends javax.swing.JFrame {
+
+    /**
+     * Creates new form frmRegistroVentas
+     */
+    private int indiceLinea=-1;
+    private frmVentas frmventas;
+
+    public frmRegistroVentas() {
+        initComponents();
+    }
+    ArrayList<DetalleVenta> detalleVenta = new ArrayList<>();
+    ArrayList<String> clientes;
+    ArrayList<String> productos;
+    int[] indicesProductos=new int[1000];
+    int i=0;
+    public frmRegistroVentas(frmVentas frmventas) {
+
+        initComponents();
+        tglEstado.setVisible(false);
+        txtFecha.setText(LocalDate.now().toString());
+        this.frmventas = frmventas;
+        clientes = manejador.ManejadorArchivo.leerArchivo("Clientes.txt");
+        productos = manejador.ManejadorArchivo.leerArchivo("Productos.txt");
+        if (clientes != null) {
+            for (String i : clientes) {
+                String elementos[] = i.split("~");
+                cboClientes.addItem(elementos[0]);
+            }
+        }
+        if (productos != null) {
+            for (String i : productos) {
+                String elementos[] = i.split("~");
+                cboProductos.addItem(elementos[0]);
+            }
+        }
+
+    }
+
+    public frmRegistroVentas(int indiceLinea, frmVentas frmventas) {
+        initComponents();
+        spnUnidades.setVisible(false);
+        btnRealizarVenta.setVisible(false);
+        btnAgregar.setVisible(false);
+        btnEliminar.setVisible(false);
+        lblUnidades.setVisible(false);
+        this.indiceLinea=indiceLinea;
+        txtFecha.setText(LocalDate.now().toString());
+        this.frmventas = frmventas;
+        clientes = manejador.ManejadorArchivo.leerArchivo("Clientes.txt");
+        productos = manejador.ManejadorArchivo.leerArchivo("Productos.txt");
+        if (clientes != null) {
+            for (String i : clientes) {
+                String elementos[] = i.split("~");
+                cboClientes.addItem(elementos[0]);
+            }
+        }
+        if (productos != null) {
+            for (String i : productos) {
+                String elementos[] = i.split("~");
+                cboProductos.addItem(elementos[0]);
+            }
+        }
+
+        //Para la recarga de la tabla de productos
+        
+        String ventas = manejador.ManejadorArchivo.leerLinea("Ventas.txt", indiceLinea);
+        
+        DefaultTableModel contenidoTabla = (DefaultTableModel) tblProductos.getModel();
+        String elementos[] = ventas.split("@");
+        String detallitosProductos[] = elementos[1].split(",");
+        
+        for (int i = 0; i < detallitosProductos.length; i++) {
+            String detallitosProducto[] = detallitosProductos[i].split("~");
+            contenidoTabla.addRow(new Object[]{detallitosProducto[1],detallitosProducto[2] ,detallitosProducto[3],detallitosProducto[0] ,(Integer.parseInt(detallitosProducto[0]) * Float.parseFloat(detallitosProducto[2]))});
+            //String[] elementos = datos.split("~");
+            String nombre = detallitosProducto[1];
+            float precio = Float.parseFloat(detallitosProducto[2]);
+            int existencias = Integer.parseInt(detallitosProducto[3]);
+            Producto p=new Producto(nombre,precio,existencias);
+            
+            Usuario u=new Usuario(elementos[2]);
+            DetalleVenta nuevoDetalle = new DetalleVenta(Integer.parseInt(detallitosProducto[0]), p, u);
+            detalleVenta.add(nuevoDetalle);
+        }
+        //Para la recarga del combo de cliente
+        String detallitosClientes[] = elementos[0].split("~");
+        String nombreCliente = detallitosClientes[0];
+        
+        int indiceCliente = -1;
+        for (int i = 0; i < clientes.size(); i++) {
+            String elementosCliente[] = clientes.get(i).split("~");
+            if (elementosCliente[0].equals(nombreCliente)){
+                indiceCliente = i;
+                break;
+            }
+        }
+        
+        if(indiceCliente != -1){
+            cboClientes.setSelectedIndex(indiceCliente);
+        }
+        
+        System.out.println(nombreCliente);
+        System.out.println(ventas);
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cboClientes = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cboProductos = new javax.swing.JComboBox<>();
+        lblUnidades = new javax.swing.JLabel();
+        spnUnidades = new javax.swing.JSpinner();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProductos = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        tglEstado = new javax.swing.JToggleButton();
+        btnRealizarVenta = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Fecha");
+
+        txtFecha.setEnabled(false);
+
+        jLabel2.setText("Cliente");
+
+        jLabel3.setText("Producto");
+
+        lblUnidades.setText("Unidades");
+
+        spnUnidades.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Producto", "Precio", "Existencias", "Unidades", "Subtotal"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblProductos);
+
+        jLabel5.setText("Registro Ventas");
+
+        tglEstado.setBackground(new java.awt.Color(51, 255, 51));
+        tglEstado.setSelected(true);
+        tglEstado.setText("Activo");
+        tglEstado.setActionCommand("Activo\nCancelada");
+        tglEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tglEstadoActionPerformed(evt);
+            }
+        });
+
+        btnRealizarVenta.setText("Realizar Venta");
+        btnRealizarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarVentaActionPerformed(evt);
+            }
+        });
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(18, 18, 18))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addGap(30, 30, 30)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(36, 36, 36)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cboProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblUnidades)
+                                .addGap(18, 18, 18)
+                                .addComponent(spnUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(tglEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(230, 230, 230))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(btnRealizarVenta)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUnidades)
+                            .addComponent(spnUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tglEstado))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRealizarVenta)
+                .addGap(0, 9, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRealizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarVentaActionPerformed
+        if(indiceLinea>=0){
+            for(DetalleVenta i: detalleVenta){
+                System.out.println(i);
+            }
+            String cliente = cboClientes.getItemAt(cboClientes.getSelectedIndex());
+            Venta v = new Venta(cliente, LocalDate.now(), true, detalleVenta);
+            System.out.println(v.toString());
+            ArrayList<String> lineas = manejador.ManejadorArchivo.reemplazarLinea("Ventas.txt",indiceLinea, v.toString());
+            frmventas.setVisible(true);
+            frmventas.actualizarTabla(lineas);
+            this.dispose();
+        }
+        else{
+            
+            String cliente = cboClientes.getItemAt(cboClientes.getSelectedIndex());
+            Venta v = new Venta(cliente, LocalDate.now(), true, detalleVenta);
+            System.out.println(v.toString());
+            for(int i=0; i<detalleVenta.size(); i++){
+                manejador.ManejadorArchivo.reemplazarLinea("Productos.txt", indicesProductos[i], detalleVenta.get(i).getProducto().toString());
+            }
+            ArrayList<String> lineas = manejador.ManejadorArchivo.agregarLinea("Ventas.txt", v.toString());
+            frmventas.setVisible(true);
+            frmventas.actualizarTabla(lineas);
+            
+            this.dispose();
+            
+        }
+    }//GEN-LAST:event_btnRealizarVentaActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        try{
+            
+            int index = cboProductos.getSelectedIndex();
+            Producto p1 = new Producto(productos.get(index));
+            cboClientes.setEnabled(false);
+            Usuario u1 = new Usuario("dfd", "dfs", "12344");
+            int unidades = (int) spnUnidades.getValue();
+            DetalleVenta detalleExistente = null;
+            for (DetalleVenta detalle : detalleVenta) {
+                if (detalle.getProducto().getNombre().equals(p1.getNombre())) {
+                    detalleExistente = detalle;
+                    break;
+                }
+            }
+            
+            DefaultTableModel contenidoTabla = (DefaultTableModel) tblProductos.getModel();
+            if (detalleExistente != null) {
+                if(detalleExistente.getProducto().getExistencias()-unidades<0){
+                    JOptionPane.showMessageDialog(null, "No hay suficientes existencias intente de nuevo (Existencias actuales="+
+                            detalleExistente.getProducto().getExistencias()+")");
+                }
+                else{
+                   detalleExistente.getProducto().setExistencias(detalleExistente.getProducto().getExistencias()-unidades);
+                   detalleExistente.setUnidades(detalleExistente.getUnidades() +unidades);
+                    System.out.println(detalleExistente.getUnidades());
+                    boolean ban = false;
+
+                    for (int i = 0; i < tblProductos.getRowCount(); i++) {
+                        if (p1.getNombre().equals(contenidoTabla.getValueAt(i, 0))) {
+                            contenidoTabla.setValueAt(detalleExistente.getProducto().getExistencias(), i, 2);
+                            contenidoTabla.setValueAt(detalleExistente.getUnidades(), i, 3);
+                            contenidoTabla.setValueAt(detalleExistente.generarSubTotal(), i, 4);
+                            ban = true;
+                            break;
+                        }
+                    } 
+                }
+                
+            } else {
+                DetalleVenta nuevoDetalle = new DetalleVenta(unidades, p1, u1);
+                if(nuevoDetalle.getProducto().getExistencias()-unidades<0){
+                    JOptionPane.showMessageDialog(null, "No hay suficientes existencias intente de nuevo (Existencias actuales="+
+                            nuevoDetalle.getProducto().getExistencias()+")");
+                }
+                else{
+                    
+                    nuevoDetalle.getProducto().setExistencias(nuevoDetalle.getProducto().getExistencias()-unidades);
+                    indicesProductos[i]=index;
+                    i++;
+                    
+                    detalleVenta.add(nuevoDetalle);
+                    contenidoTabla.addRow(new Object[]{p1.getNombre(),p1.getPrecio(),p1.getExistencias(), nuevoDetalle.getUnidades(), nuevoDetalle.generarSubTotal()});
+                }
+                
+
+            }
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+
+
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (tblProductos.isRowSelected(tblProductos.getSelectedRow())) {
+            DefaultTableModel contenidoTabla = (DefaultTableModel) tblProductos.getModel();
+            detalleVenta.removeIf(detalle -> detalle.getProducto().getNombre().equals(tblProductos.getValueAt(tblProductos.getSelectedRow(), 0)));
+            contenidoTabla.removeRow(tblProductos.getSelectedRow());
+            if (tblProductos.getRowCount() == 0) {
+                cboClientes.setEnabled(true);
+            }
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Seleccione el producto que desea eliminar.");
+        }
+        for (DetalleVenta i : detalleVenta) {
+            System.out.println(i.toString());
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tglEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglEstadoActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Estas seguro" + " que desea cancelar la venta? ","Gestion de carreras", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION){
+            String linea=manejador.ManejadorArchivo.leerLinea("Ventas.txt", indiceLinea);
+            Venta v= new Venta(linea);
+            System.out.println(v);
+            for(int i=0; i<v.getDetalleVenta().size(); i++){
+                System.out.println(v.getDetalleVenta().get(i).getProducto().toString());
+                Producto p=new Producto(v.getDetalleVenta().get(i).getProducto().toString());
+                p.setExistencias(v.getDetalleVenta().get(i).getUnidades()+p.getExistencias());
+                
+                manejador.ManejadorArchivo.reemplazarLinea("Productos.txt", i, p.toString());
+             
+            }
+           ArrayList<String>a=manejador.ManejadorArchivo.eliminarLinea("Ventas.txt", indiceLinea);
+           frmventas.actualizarTabla(a);
+           frmventas.setVisible(true);
+           this.dispose();
+        }
+    }//GEN-LAST:event_tglEstadoActionPerformed
+
+    public void actualizarTabla(ArrayList<String> lineas) {
+        DefaultTableModel contenidoTabla = (DefaultTableModel) tblProductos.getModel();
+        contenidoTabla.setRowCount(0);
+        for (String linea : lineas) {
+            Producto a = new Producto(linea);
+            contenidoTabla.addRow(a.toArray());
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmRegistroVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmRegistroVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmRegistroVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmRegistroVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmRegistroVentas().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnRealizarVenta;
+    private javax.swing.JComboBox<String> cboClientes;
+    private javax.swing.JComboBox<String> cboProductos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblUnidades;
+    private javax.swing.JSpinner spnUnidades;
+    private javax.swing.JTable tblProductos;
+    private javax.swing.JToggleButton tglEstado;
+    private javax.swing.JTextField txtFecha;
+    // End of variables declaration//GEN-END:variables
+}
