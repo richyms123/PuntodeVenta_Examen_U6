@@ -4,6 +4,7 @@
  */
 package mycompany.puntodeventa_examen_u6;
 
+import Clases.Usuario;
 import java.net.URL;
 
 /**
@@ -11,12 +12,22 @@ import java.net.URL;
  * @author carli
  */
 public class frmMenu extends javax.swing.JFrame {
-
+    
+    private frmLogin u;
+    private Usuario User;
+    
     /**
      * Creates new form frmMenu
      */
     public frmMenu() {
         initComponents();
+    }
+    
+    public frmMenu(frmLogin U, Usuario Us){
+        initComponents();
+        u = U;
+        User = Us;
+        lblNombreUsuario.setText(User.getUsuario());
     }
 
     /**

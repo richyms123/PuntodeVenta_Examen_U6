@@ -264,7 +264,6 @@ public class frmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"No se pudo leer la línea del archivo.");
         }
     }
-        
       
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
