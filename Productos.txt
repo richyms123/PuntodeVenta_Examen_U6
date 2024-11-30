@@ -1,0 +1,5 @@
+Cereal~19.99~80~
+Leche~12.99~200~
+Leche~12.99~180~
+Galletas~5.99~300
+Enlatados~7.50~120

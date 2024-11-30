@@ -1,41 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clases;
 
-/**
- *
- * @author rickp
- */
 public class Producto {
-    private int clave;
+
     private String nombre;
     private float precio;
     private int existencias;
-    
-     public Producto(int clave, String nombre, float precio, int existencias) {
-        this.clave = clave;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.existencias = existencias;
+
+    public Producto(String nombre, float precio, int existencias) {
+        setNombre(nombre);
+        setPrecio(precio);
+        setExistencias(existencias);
     }
 
     public Producto(String datos) {
-        String[] elementos=datos.split("°");
-        clave=Integer.parseInt(elementos[0]);
-        nombre=elementos[1];
-        precio=Float.parseFloat(elementos[2]);
-        existencias=Integer.parseInt(elementos[3]);
-        
-    }
+        if (datos == null || datos.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los datos no pueden ser nulos o vacíos.");
+        }
+        String[] elementos = datos.split("~");
 
-    public int getClave() {
-        return clave;
-    }
+        String nombreTemp = elementos[0];
+        float precioTemp = Float.parseFloat(elementos[1]);
+        int existenciasTemp = Integer.parseInt(elementos[2]);
 
-    public void setClave(int clave) {
-        this.clave = clave;
+        setNombre(nombreTemp);
+        setPrecio(precioTemp);
+        setExistencias(existenciasTemp);
+
     }
 
     public String getNombre() {
@@ -43,6 +33,9 @@ public class Producto {
     }
 
     public void setNombre(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre del producto no puede ser nulo o vacío.");
+        }
         this.nombre = nombre;
     }
 
@@ -51,6 +44,9 @@ public class Producto {
     }
 
     public void setPrecio(float precio) {
+        if (precio <= 0) {
+            throw new IllegalArgumentException("El precio debe ser mayor a cero.");
+        }
         this.precio = precio;
     }
 
@@ -59,8 +55,26 @@ public class Producto {
     }
 
     public void setExistencias(int existencias) {
+        if (existencias < 0) {
+            throw new IllegalArgumentException("Las existencias no pueden ser negativas.");
+        }
         this.existencias = existencias;
     }
+
+    /**
+     * Regresa la concatenacion de todos lso atributos de Producto separados por
+     * "~" incluyendolo al principio y al final. Ejemplo
+     * ~Clave~Nombre~Precio~Existencias~ ~13~Pan~16.90~13~
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return nombre + "~" + precio + "~" + existencias + "~";
+    }
     
-    
+    public Object[] toArray(){
+        return new Object[]{nombre,precio,existencias};
+    }
+
 }
