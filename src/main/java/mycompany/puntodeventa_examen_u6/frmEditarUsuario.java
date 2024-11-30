@@ -64,7 +64,11 @@ public class frmEditarUsuario extends javax.swing.JFrame {
         pswContra = new javax.swing.JPasswordField();
         chkMostrar = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel3.setText("Nombre");
 
@@ -232,6 +236,12 @@ public class frmEditarUsuario extends javax.swing.JFrame {
     private void pswContraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswContraFocusLost
         pswContra.setEchoChar('*');
     }//GEN-LAST:event_pswContraFocusLost
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        frmMenu frm = new frmMenu();
+        this.setVisible(false);
+        frm.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

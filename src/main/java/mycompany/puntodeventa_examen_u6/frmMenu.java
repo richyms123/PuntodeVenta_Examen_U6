@@ -4,6 +4,8 @@
  */
 package mycompany.puntodeventa_examen_u6;
 
+import java.net.URL;
+
 /**
  *
  * @author carli
@@ -88,14 +90,13 @@ public class frmMenu extends javax.swing.JFrame {
                 .addGroup(pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(254, 254, 254)
-                        .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
-                        .addComponent(lblNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(293, 293, 293))))
+                        .addGap(35, 35, 35))
+                    .addComponent(lblNombreUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(174, 174, 174)
+                .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlTituloLayout.setVerticalGroup(
             pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +119,6 @@ public class frmMenu extends javax.swing.JFrame {
         btnEditarUsuario.setBackground(new java.awt.Color(40, 150, 71));
         btnEditarUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnEditarUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editar usuario.png"))); // NOI18N
         btnEditarUsuario.setText("Editar Usuario");
         btnEditarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditarUsuario.setHideActionText(true);
@@ -131,7 +131,6 @@ public class frmMenu extends javax.swing.JFrame {
         btnConsultarVentas.setBackground(new java.awt.Color(40, 150, 71));
         btnConsultarVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnConsultarVentas.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/consultar ventas.png"))); // NOI18N
         btnConsultarVentas.setText("Consultar Ventas");
         btnConsultarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConsultarVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +142,6 @@ public class frmMenu extends javax.swing.JFrame {
         btnNuevaVenta.setBackground(new java.awt.Color(40, 150, 71));
         btnNuevaVenta.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnNuevaVenta.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/nueva venta.png"))); // NOI18N
         btnNuevaVenta.setText("Nueva Venta");
         btnNuevaVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevaVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +153,6 @@ public class frmMenu extends javax.swing.JFrame {
         btnVentasDelDia.setBackground(new java.awt.Color(40, 150, 71));
         btnVentasDelDia.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnVentasDelDia.setForeground(new java.awt.Color(255, 255, 255));
-        btnVentasDelDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ventas del dia.png"))); // NOI18N
         btnVentasDelDia.setText("Ventas del Dia");
         btnVentasDelDia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentasDelDia.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +164,6 @@ public class frmMenu extends javax.swing.JFrame {
         btnRegistrarUsuarios.setBackground(new java.awt.Color(40, 150, 71));
         btnRegistrarUsuarios.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnRegistrarUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/nueva-cuenta gr.png"))); // NOI18N
         btnRegistrarUsuarios.setText("Registrar Usuario");
         btnRegistrarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrarUsuarios.setHideActionText(true);
@@ -180,7 +176,6 @@ public class frmMenu extends javax.swing.JFrame {
         btnCatalogoUsuarios.setBackground(new java.awt.Color(40, 150, 71));
         btnCatalogoUsuarios.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCatalogoUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        btnCatalogoUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/catalogo usuarios.png"))); // NOI18N
         btnCatalogoUsuarios.setText("Catalogo de Usuarios");
         btnCatalogoUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCatalogoUsuarios.setHideActionText(true);
@@ -193,7 +188,6 @@ public class frmMenu extends javax.swing.JFrame {
         btnCatalagoProductos.setBackground(new java.awt.Color(40, 150, 71));
         btnCatalagoProductos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCatalagoProductos.setForeground(new java.awt.Color(255, 255, 255));
-        btnCatalagoProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/catalogo-de-productos.png"))); // NOI18N
         btnCatalagoProductos.setText("Catalago Productos");
         btnCatalagoProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCatalagoProductos.setFocusCycleRoot(true);
@@ -226,7 +220,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCatalogoUsuarios))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCatalagoProductos, btnCatalogoUsuarios, btnConsultarVentas, btnEditarUsuario, btnNuevaVenta, btnRegistrarUsuarios, btnVentasDelDia});
@@ -234,7 +228,7 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,7 +278,9 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentasDelDiaActionPerformed
 
     private void btnRegistrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuariosActionPerformed
-        // TODO add your handling code here:
+        frmCrearUsuario frm = new frmCrearUsuario();
+        this.setVisible(false);
+        frm.setVisible(true);
     }//GEN-LAST:event_btnRegistrarUsuariosActionPerformed
 
     private void btnCatalogoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoUsuariosActionPerformed
@@ -296,7 +292,9 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCatalagoProductosActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
-        // TODO add your handling code here:
+        frmEditarUsuario frm = new frmEditarUsuario();
+        this.setVisible(false);
+        frm.setVisible(true);
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
     private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
