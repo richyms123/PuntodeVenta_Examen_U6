@@ -42,8 +42,6 @@ public class frmMenu extends javax.swing.JFrame {
         pnlTitulo = new javax.swing.JPanel();
         lblDos = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
-        btnMinimizar = new javax.swing.JLabel();
-        btnCerrar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnEditarUsuario = new javax.swing.JButton();
         btnConsultarVentas = new javax.swing.JButton();
@@ -68,56 +66,24 @@ public class frmMenu extends javax.swing.JFrame {
         lblNombreUsuario.setText("Usuario");
         lblNombreUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        btnMinimizar.setBackground(new java.awt.Color(250, 150, 16));
-        btnMinimizar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        btnMinimizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMinimizar.setText("--");
-        btnMinimizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMinimizarMouseClicked(evt);
-            }
-        });
-
-        btnCerrar.setBackground(new java.awt.Color(250, 150, 16));
-        btnCerrar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnCerrar.setText("X");
-        btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCerrarMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlTituloLayout = new javax.swing.GroupLayout(pnlTitulo);
         pnlTitulo.setLayout(pnlTituloLayout);
         pnlTituloLayout.setHorizontalGroup(
             pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addGroup(pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
                         .addComponent(lblDos)
                         .addGap(35, 35, 35))
                     .addComponent(lblNombreUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(174, 174, 174)
-                .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(248, 248, 248))
         );
         pnlTituloLayout.setVerticalGroup(
             pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDos)
-                    .addGroup(pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(lblDos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -308,16 +274,6 @@ public class frmMenu extends javax.swing.JFrame {
         frm.setVisible(true);
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
-    private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
-        this.setState(frmLogin.HIDE_ON_CLOSE);
-    }//GEN-LAST:event_btnMinimizarMouseClicked
-
-    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
-        frmLogin frm = new frmLogin();
-        this.dispose();
-        frm.setVisible(true);
-    }//GEN-LAST:event_btnCerrarMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -356,10 +312,8 @@ public class frmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCatalagoProductos;
     private javax.swing.JButton btnCatalogoUsuarios;
-    private javax.swing.JLabel btnCerrar;
     private javax.swing.JButton btnConsultarVentas;
     private javax.swing.JButton btnEditarUsuario;
-    private javax.swing.JLabel btnMinimizar;
     private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JButton btnRegistrarUsuarios;
     private javax.swing.JButton btnVentasDelDia;
